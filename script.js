@@ -328,7 +328,7 @@ function addScene2Insights(insights) {
   insightDiv.append("h4")
     .style("margin", "0 0 10px 0")
     .style("color", "#856404")
-    .text("💡 Quick Insight");
+    .text("Quick Insight");
   
   insightDiv.append("p")
     .style("margin", "0")
@@ -355,7 +355,7 @@ function addScene3Insights(insights) {
   insightDiv.append("h4")
     .style("margin", "0 0 10px 0")
     .style("color", "#0c5460")
-    .text("📊 Data Insight");
+    .text("Data Insight");
   
   insightDiv.append("p")
     .style("margin", "0")
