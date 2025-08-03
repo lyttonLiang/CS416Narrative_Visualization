@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mental Health Visualization</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f7fb;
+      text-align: center;
+    }
+    #scene1, #scene2, #scene3 {
+      display: none;
+      padding: 40px 20px;
+    }
+    #scene1.active, #scene2.active, #scene3.active {
+      display: block;
+    }
+    #scene1 h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #003366;
+    }
+    #scene1 p {
+      font-size: 1.1rem;
+      max-width: 750px;
+      margin: 0 auto 20px;
+      color: #333;
+    }
+    #scene1 img {
+      max-width: 60%;
+      height: auto;
+      margin: 30px auto 20px;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .start-button {
+      margin: 10px;
+      padding: 12px 28px;
+      font-size: 16px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .start-button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+<div id="scene1" class="active">
+  <div style="display: flex; justify-content: space-between;">
+    <div></div> <!-- Empty div for spacing -->
+    <button class="start-button" onclick="showScene2()">Start Exploring</button>
+  </div>
+  <h1>Mental Health in the U.S.</h1>
+  <p>
+    Mental health affects millions across all demographics, and understanding its patterns is critical for policy, care, and awareness.
+  </p>
+  <p>
+    By breaking down the data, we aim to shed light on disparities and needs across different groups, helping communities,
+    researchers, and policymakers make better-informed decisions.
+  </p>
+  <img src="how_are_you_intro.png" alt="Mental health intro image" />
+  <p style="max-width: 700px; margin: 20px auto; font-size: 1.05rem; color: #333;">
+    This website explores mental health trends by age, gender, education level, and marital status based on the 2021 SAMHSA Mental Health Client-Level Dataset</a>.
+  </p>
+  
+  <!-- Added detailed annotations -->
+  <div style="max-width: 800px; margin: 30px auto; text-align: left; background: #f8f9fa; padding: 25px; border-radius: 10px; border-left: 4px solid #007acc;">
+    <h3 style="color: #007acc; margin-top: 0;">What You'll Discover:</h3>
+    <ul style="line-height: 1.6; color: #555;">
+      <li><strong>Scene 1:</strong> Introduction to mental health data and its importance</li>
+      <li><strong>Scene 2:</strong> Interactive heart chart showing how mental health varies by demographics - use filters to explore different groups</li>
+      <li><strong>Scene 3:</strong> Education's impact on mental health diagnosis rates across different conditions</li>
+    </ul>
+    <p style="margin-bottom: 0; font-style: italic; color: #666;">
+      💡 <strong>Pro tip:</strong> Hover over hearts and bars to see detailed percentages and insights!
+    </p>
+  </div>
+</div>
+
+<div id="scene2">
+  <div style="display: flex; justify-content: space-between;">
+    <button class="start-button" onclick="showScene1()">← Back to Main</button>
+    <button class="start-button" onclick="showScene3()">Next →</button>
+  </div>
+  <h2>Mental Health by Gender, Age and Marital Status</h2>
+  
+  <!-- Added guidance annotations -->
+  <div style="max-width: 900px; margin: 20px auto; background: #fff3cd; padding: 15px; border-radius: 8px; border: 1px solid #ffeaa7;">
+    <p style="margin: 0; color: #856404; font-weight: 500;">
+      🔍 <strong>How to explore:</strong> Use the filters above to focus on specific demographics. Try different combinations to discover patterns!
+    </p>
+  </div>
+  
+  <div id="filters">
+    Gender:
+    <select id="gender"></select>
+    Education:
+    <select id="education"></select>
+    Mental Issue:
+    <select id="issue"></select>
+  </div>
+  
+  <div id="chart-wrapper">
+    <svg id="chart" width="1200" height="900"></svg>
+  </div>
+  
+  <!-- Enhanced color legend with more context -->
+  <div style="max-width: 900px; margin: 20px auto; background: #e8f4fd; padding: 20px; border-radius: 8px; border-left: 4px solid #007acc;">
+    <h4 style="margin-top: 0; color: #007acc;">Understanding the Visualization:</h4>
+    <p class="color-note" style="margin-bottom: 15px;">
+      ❤️ <strong>Heart color represents mental health issue prevalence.</strong><br>
+      A darker red heart means a higher proportion of individuals in that group were diagnosed with the selected issue.<br>
+    </p>
+    
+    <!-- Added key insights section -->
+    <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 15px;">
+      <h5 style="margin-top: 0; color: #333;">💡 Key Insights to Look For:</h5>
+      <ul style="margin-bottom: 0; color: #555; line-height: 1.5;">
+        <li><strong>Age patterns:</strong> Notice how mental health rates change across different age groups</li>
+        <li><strong>Marital status impact:</strong> Compare rates between married, divorced, and never married individuals</li>
+        <li><strong>Gender differences:</strong> Explore how mental health affects different genders</li>
+        <li><strong>Education correlation:</strong> See how education levels relate to mental health diagnosis rates</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="scene3">
+  <div style="display: flex; justify-content: space-between;">
+    <button class="start-button" onclick="showScene2()">← Back</button>
+    <div></div> <!-- Empty div for spacing -->
+  </div>
+  <h2>Education Level vs Mental Health Diagnosis</h2>
+  
+  <!-- Added guidance annotations -->
+  <div style="max-width: 900px; margin: 20px auto; background: #d1ecf1; padding: 15px; border-radius: 8px; border: 1px solid #bee5eb;">
+    <p style="margin: 0; color: #0c5460; font-weight: 500;">
+      📊 <strong>Focus:</strong> This chart shows how education levels correlate with mental health diagnosis rates. Select different mental health conditions to explore patterns!
+    </p>
+  </div>
+  
+  <div id="scene3-filters">
+    Mental Issue:
+    <select id="scene3-issue"></select>
+  </div>
+  
+  <svg id="scene3-chart" width="1000" height="600"></svg>
+  
+  <div style="max-width: 900px; margin: 20px auto; background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #28a745;">
+    <h4 style="margin-top: 0; color: #28a745;">📈 Understanding the Bar Chart:</h4>
+    <p style="margin-bottom: 15px; color: #555;">
+      Each bar represents the average percentage of individuals with the selected mental health condition within that education level. 
+      Taller bars indicate higher diagnosis rates.
+    </p>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 15px;">
+      <h5 style="margin-top: 0; color: #333;">🔍 Questions to Explore:</h5>
+      <ul style="margin-bottom: 0; color: #555; line-height: 1.5;">
+        <li><strong>Education gradient:</strong> Do higher education levels correlate with higher or lower mental health diagnosis rates?</li>
+        <li><strong>Condition variation:</strong> How do different mental health conditions vary across education levels?</li>
+        <li><strong>Policy implications:</strong> What might these patterns suggest about mental health support needs?</li>
+        <li><strong>Access to care:</strong> Could education level affect access to mental health diagnosis and treatment?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Footer with data source citation -->
+<footer style="background: #f8f9fa; border-top: 1px solid #dee2e6; padding: 20px 0; margin-top: 40px; text-align: center; font-size: 14px; color: #6c757d;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div style="margin-bottom: 15px;">
+      <strong>Data Source:</strong> 
+      <a href="https://www.samhsa.gov/data/data-we-collect/mh-cld-mental-health-client-level-data/datafiles/2021" 
+         target="_blank" 
+         style="color: #007acc; text-decoration: none;">
+        SAMHSA Mental Health Client-Level Data (MH-CLD), 2021
+      </a>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <strong>About the Data:</strong> This visualization uses the 2021 Mental Health Client-Level Data from the Substance Abuse and Mental Health Services Administration (SAMHSA). 
+      The data represents clients receiving publicly funded mental health treatment services across the United States.
+    </div>
+    <div style="font-size: 12px; color: #868e96;">
+      <strong>Note:</strong> Data limitations include that MH-CLD represents clients receiving publicly funded mental health services and may not represent the total national demand for mental health treatment. 
+      For complete methodology and limitations, see the 
+      <a href="https://www.samhsa.gov/data/data-we-collect/mh-cld-mental-health-client-level-data/datafiles/2021" 
+         target="_blank" 
+         style="color: #007acc; text-decoration: none;">
+        official SAMHSA documentation
+      </a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="script.js"></script>
+<script>
+  function showScene1() {
+    document.querySelectorAll("div[id^='scene']").forEach(div => div.classList.remove("active"));
+    document.getElementById("scene1").classList.add("active");
+  }
+  function showScene2() {
+    document.querySelectorAll("div[id^='scene']").forEach(div => div.classList.remove("active"));
+    document.getElementById("scene2").classList.add("active");
+  }
+  function showScene3() {
+    document.querySelectorAll("div[id^='scene']").forEach(div => div.classList.remove("active"));
+    document.getElementById("scene3").classList.add("active");
+    // Wait a bit for the DOM to update, then render Scene 3
+    setTimeout(() => {
+      if (typeof renderScene3 === "function") {
+        renderScene3();
+      }
+    }, 100);
+  }
+</script>
+</body>
+</html>
